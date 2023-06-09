@@ -6,7 +6,7 @@
       <div class="game-container-play">
         <button class="play" @click="onClickPlayGame()">Click to play</button>
       </div>
-      <div class="game-container-puzzle">
+      <div class="game-container-puzzle" v-show="isPlay">
         <input
           @click="onClickMove($event)"
           value="1"
@@ -130,6 +130,7 @@ import Swal from "sweetalert2";
 export default {
   data() {
     return {
+      isPlay: false,
       matrix: [
         [1, 2, 3, 4],
         [5, 6, 7, 8],
@@ -263,6 +264,7 @@ export default {
       }
     },
     onClickPlayGame() {
+      this.isPlay = true;
       this.initialize(); //Hàm khởi tạo chạy game
       this.beginTime(); // Hàm tính thời gian
     },
